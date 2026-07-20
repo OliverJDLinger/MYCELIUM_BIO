@@ -1,0 +1,243 @@
+% Template for the Journal of Computational Science and Applications (JCSA)
+% Published by the University of Lahore -- ISSN 2710-3102
+% Official author guidelines: https://journals.uol.edu.pk/JCSA/Author-Guideline
+\documentclass[twoside,twocolumn,10pt]{article}
+\usepackage{lipsum}  % For sample/placeholder text
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{multicol}
+\usepackage{abstract}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{titlesec}
+\usepackage{ragged2e}  % Provides the justifying command
+\usepackage{amssymb}  % For additional symbols
+\usepackage{parskip}  % Automatically handles paragraph spacing
+\usepackage{amsmath}  % For advanced math environments
+\usepackage{newtxtext}  % Times New Roman font
+\usepackage{booktabs}  % For improved table appearance
+\usepackage{array}     % For customizing table columns
+
+% The starting page number is normally assigned by the editorial office
+% once the article is scheduled into a specific issue. Authors can leave
+% this at 1; production will update it if required.
+\setcounter{page}{1}
+
+% Define custom column types for better alignment and spacing
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}} % Left aligned column
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}   % Center aligned column
+\newcolumntype{R}[1]{>{\raggedleft\arraybackslash}p{#1}}  % Right aligned column
+
+\usepackage[font=footnotesize, labelfont=bf, justification=raggedright, format=plain]{caption}
+
+\captionsetup[table]{
+    labelsep=period,               % Period after label for tables
+    justification=raggedright      % Ensure left alignment of captions
+}
+
+\captionsetup[figure]{
+    labelsep=period,               % Period after label for figures
+    justification=raggedright      % Ensure left alignment of captions
+}
+
+\usepackage[backend=bibtex,style=ieee]{biblatex}
+\addbibresource{references.bib}  % Add your .bib file
+% Customizing bibliography heading
+\defbibheading{bibliography}[\refname]{%
+  \section{\MakeUppercase{REFERENCES}}}
+
+% Set page margins
+\geometry{
+    a4paper,
+    left=0.8in,
+    right=0.8in,
+    top=1in,
+    bottom=1in
+}
+
+% Increase space between columns
+\setlength{\columnsep}{15pt}
+
+% Define the centred abstract heading
+\renewcommand{\abstractname}{\hspace{1.3em}\textbf{Abstract}}
+
+\titleformat{\section}{\large\bfseries\uppercase}{\thesection.}{1em}{}
+
+\titleformat{\subsection}{\normalfont\bfseries\flushleft}{\thesubsection.}{1em}{}
+
+\titleformat{\subsubsection}{\normalfont\bfseries\itshape\flushleft}{\thesubsubsection}{1em}{}
+
+% Set font sizes for abstract
+\renewcommand{\abstractnamefont}{\normalfont\fontsize{14}{20}\bfseries}
+\renewcommand{\absnamepos}{flushleft}
+\renewcommand{\abstracttextfont}{\normalfont\fontsize{11}{13}\selectfont}
+
+% Keywords environment
+\newcommand{\keywordsname}{Keywords}
+\newenvironment{keywords}
+  {\par\noindent\hspace{2em}\textbf{\keywordsname:}}
+  {\par}
+
+\hyphenpenalty=10000
+\exhyphenpenalty=10000
+\sloppy
+
+% Set up header and footer styles
+\pagestyle{fancy}
+\fancyhf{}  % Clear default header and footer
+
+% Odd page headers -- replace with a short running form of your title
+\fancyhead[C]{\small Running Title of the Paper}
+
+% Even page headers -- replace with the first author's surname and year
+\fancyhead[CE]{\small Author Surname et al. (Year)}
+
+% Footer: Page numbers only (on all pages except the first one)
+\fancyfoot[C]{\thepage}
+
+% First page custom header/footer
+\fancypagestyle{firstpage}{
+  \fancyhf{}  % Clear header and footer
+  \fancyhead[LO]{\small Volume X, Issue Y, Year}  % Left header for first page
+  \fancyhead[RO]{\small J. Comput. Sci. Appl.}  % Right header for first page
+  \fancyfoot[L]{\footnotesize Received: Month Year; Revised: Month Year; Accepted: Month Year\\\textsuperscript{*}Corresponding Author: Full Name \textless email@example.com\textgreater}
+   \fancyfoot[R]{\footnotesize \copyright\ Year by the Author(s). Published by JCSA,\\\textsuperscript{*} under the CC-BY license }
+  \renewcommand{\headrulewidth}{0.4pt}  % Add header line
+  \renewcommand{\footrulewidth}{0.4pt}  % Add footer line
+}
+
+\title{\fontsize{16}{20}\selectfont\textbf{Title of the Manuscript Goes Here}}
+\author{
+    \fontsize{12}{14}\selectfont
+    First Author\textsuperscript{1*}, Second Author\textsuperscript{2}\\[1ex]
+    \fontsize{12}{14}\selectfont
+    \textsuperscript{1}Department Name, University Name, City, Country \\
+   \textsuperscript{2}Department Name, University Name, City, Country
+}
+\date{}
+
+\begin{document}
+
+\twocolumn[
+\begin{@twocolumnfalse}
+% Change "Research Article" to the appropriate article type if needed
+% (e.g. Review Article, Short Communication).
+\vspace{-0.5cm}  % Adjust spacing as needed between header and "Research Article"
+\raggedright
+
+{\fontsize{11}{13}\selectfont{Research Article}}
+\vspace{-0.8cm}  % Adjust spacing between "Research Article" and title
+
+% Now, insert the title and the author information
+\maketitle
+
+\thispagestyle{firstpage} % Apply custom header/footer for first page
+\begin{abstract}
+\fontsize{11}{13}\selectfont
+\vspace{1em}
+\justifying
+\textit{[Replace this paragraph with your abstract. The abstract should be a single, self-contained paragraph of approximately 150--250 words summarizing the purpose of the study, the methodology used, the principal results, and the main conclusions. Avoid citations, footnotes, and undefined abbreviations in the abstract.]}
+
+\vspace{-0.1cm}
+\noindent\textbf{keywords}
+ Keyword one, Keyword two, Keyword three, Keyword four.
+
+\end{abstract}
+
+\vspace{1cm}
+\end{@twocolumnfalse}
+]
+\section{Introduction}
+\fontsize{12}{14}\selectfont
+\textit{[Replace this section with your Introduction. Provide sufficient background to place the work in context, state the problem being addressed, and summarize the objectives and contributions of the study. The example paragraph below shows the default paragraph style, justification, and hyphenation settings used throughout the template.]}
+
+\lipsum[1]
+
+In-text citations use the \verb|\cite| command and follow the IEEE numbered style configured for this template, e.g., a single reference \cite{1_Su2022} or multiple references \cite{2_Lind2021, 3_Kuwahara2022}.
+
+\section{Literature Review}
+\fontsize{12}{14}\selectfont
+\textit{[Replace this section with a review of the relevant prior literature, positioning your contribution relative to existing work.]}
+
+\lipsum[2-3]
+
+\section{Methodology and Data}
+\textit{[Replace this section with a description of your data sources and methodology.]}
+\fontsize{12}{14}\selectfont
+\lipsum[4]
+
+\subsection{Example Subsection}
+\fontsize{12}{14}\selectfont
+\textit{[Use subsections to organize the methodology, e.g., data description, variable construction, and model specification.]}
+
+\lipsum[5]
+
+\subsection{Example Second Subsection}
+\fontsize{12}{14}\selectfont
+\lipsum[6]
+
+\subsubsection{Example Subsubsection}
+
+\textit{[Subsubsections are available for finer-grained organization where needed.]}
+
+\section{Results and Discussion}
+
+\textit{[Replace this section with your results and discussion. The example figures and table below demonstrate the recommended formatting for graphical and tabular content in this template.]}
+
+\lipsum[7]
+
+Figure~\ref{fig:example-one} and Figure~\ref{fig:example-two} illustrate how single-column-width figures are placed and captioned within the two-column layout. Table~\ref{tab:example-table} illustrates the recommended table style.
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{Figure_1_AI_vs_Renewable.png}
+\caption{Example figure demonstrating image placement and caption formatting.}
+\label{fig:example-one}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{Figure_2_Energy_vs_AI.png}
+\caption{Example figure demonstrating a second illustration within the layout.}
+\label{fig:example-two}
+\end{figure}
+
+\begin{table}[h]
+\centering
+\caption{Example table demonstrating the recommended table formatting.}
+\label{tab:example-table}
+\resizebox{\columnwidth}{!}{%
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{Category} & \textbf{Metric A} & \textbf{Metric B} \\
+\hline
+Group 1 & 0.85 & 12\% \\
+Group 2 & 0.78 & 10\% \\
+Group 3 & 0.65 & 8\% \\
+Group 4 & 0.50 & 5\% \\
+\hline
+\end{tabular}%
+}
+\end{table}
+
+\lipsum[8]
+
+\section{Conclusion and Future Work}
+
+\textit{[Replace this section with your conclusions, summarizing the key findings and their implications, and outlining directions for future work.]}
+
+\lipsum[9]
+
+\section{Declaration}
+\fontsize{11}{13}\selectfont
+
+\textbf{Conflict of Interest: } [State any conflicts of interest, or declare that the authors have none.]
+
+\textbf{Author Contribution:}
+[Describe each author's contribution, e.g., using CRediT taxonomy roles such as conceptualization, methodology, data collection, analysis, writing, and supervision.]
+
+% Example for references section
+
+\printbibliography  % Use BibLaTeX for printing bibliography
+
+\end{document}
