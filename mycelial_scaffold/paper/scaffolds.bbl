@@ -1,0 +1,187 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{rufferi_mycleium_based_wound_healing_2023}{article}{}{}
+      \true{moreauthor}
+      \true{morelabelname}
+      \name{author}{3}{}{%
+        {{hash=8d8bfba2700408255258ca7e4519ba78}{%
+           family={Ruggeri},
+           familyi={R\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+        {{hash=faf76d000b90af8a61fbb4e42a44fe67}{%
+           family={Miele},
+           familyi={M\bibinitperiod},
+           given={D.},
+           giveni={D\bibinitperiod}}}%
+        {{hash=0195bedbddaf49d0e6f97b89abfeefff}{%
+           family={Contardi},
+           familyi={C\bibinitperiod},
+           given={M.},
+           giveni={M\bibinitperiod}}}%
+      }
+      \strng{namehash}{f23319c5af54e9e47daf0e2215110517}
+      \strng{fullhash}{f23319c5af54e9e47daf0e2215110517}
+      \strng{fullhashraw}{f23319c5af54e9e47daf0e2215110517}
+      \strng{bibnamehash}{f23319c5af54e9e47daf0e2215110517}
+      \strng{authorbibnamehash}{f23319c5af54e9e47daf0e2215110517}
+      \strng{authornamehash}{f23319c5af54e9e47daf0e2215110517}
+      \strng{authorfullhash}{f23319c5af54e9e47daf0e2215110517}
+      \strng{authorfullhashraw}{f23319c5af54e9e47daf0e2215110517}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Frontiers in Bioengineering and Biotechnology}
+      \field{title}{Mycelium-based biomaterials as smart devices for skin wound healing}
+      \field{volume}{11}
+      \field{year}{2023}
+      \field{pages}{1225722}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.3389/fbioe.2023.1225722
+      \endverb
+      \verb{urlraw}
+      \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC10465301/
+      \endverb
+      \verb{url}
+      \verb https://pmc.ncbi.nlm.nih.gov/articles/PMC10465301/
+      \endverb
+    \endentry
+    \entry{Antinori2021Mycelium}{article}{}{}
+      \name{author}{8}{}{%
+        {{hash=5506432a3779bdad85218fa3b609b648}{%
+           family={Antinori},
+           familyi={A\bibinitperiod},
+           given={Maria\bibnamedelima Elena},
+           giveni={M\bibinitperiod\bibinitdelim E\bibinitperiod}}}%
+        {{hash=d151ce8b37a58cbfba4f44714d0cf8d6}{%
+           family={Contardi},
+           familyi={C\bibinitperiod},
+           given={Marco},
+           giveni={M\bibinitperiod}}}%
+        {{hash=2f4d98408ec14873511c9cd9efc9a41f}{%
+           family={Suarato},
+           familyi={S\bibinitperiod},
+           given={Giulia},
+           giveni={G\bibinitperiod}}}%
+        {{hash=b08a0ac8ab67a7e88351bf4630db4b70}{%
+           family={Armirotti},
+           familyi={A\bibinitperiod},
+           given={Andrea},
+           giveni={A\bibinitperiod}}}%
+        {{hash=c2e115bbad86b017706c26c86963117d}{%
+           family={Bertorelli},
+           familyi={B\bibinitperiod},
+           given={Rosalia},
+           giveni={R\bibinitperiod}}}%
+        {{hash=ec5848f6ded620e4514d6d083e1066c1}{%
+           family={Mancini},
+           familyi={M\bibinitperiod},
+           given={Giorgio},
+           giveni={G\bibinitperiod}}}%
+        {{hash=6814a8027e4212e8b0b512b3331524d1}{%
+           family={Debellis},
+           familyi={D\bibinitperiod},
+           given={Doriana},
+           giveni={D\bibinitperiod}}}%
+        {{hash=3d383e4ba978231e81541ad58453765e}{%
+           family={Athanassiou},
+           familyi={A\bibinitperiod},
+           given={Athanassia},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{97b1987d6e1cb6d9487c760f817e6a29}
+      \strng{fullhash}{a7d855ca153884e143d1e031441eac20}
+      \strng{fullhashraw}{a7d855ca153884e143d1e031441eac20}
+      \strng{bibnamehash}{97b1987d6e1cb6d9487c760f817e6a29}
+      \strng{authorbibnamehash}{97b1987d6e1cb6d9487c760f817e6a29}
+      \strng{authornamehash}{97b1987d6e1cb6d9487c760f817e6a29}
+      \strng{authorfullhash}{a7d855ca153884e143d1e031441eac20}
+      \strng{authorfullhashraw}{a7d855ca153884e143d1e031441eac20}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Scientific Reports}
+      \field{number}{1}
+      \field{title}{Advanced mycelium materials as potential self-growing biomedical scaffolds}
+      \field{volume}{11}
+      \field{year}{2021}
+      \field{pages}{12630}
+      \range{pages}{1}
+      \verb{doi}
+      \verb 10.1038/s41598-021-91572-x
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1038/s41598-021-91572-x
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1038/s41598-021-91572-x
+      \endverb
+    \endentry
+    \entry{Voog2010NicheStemCells}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=c9a17005701bbcb1fe4010c78a040a29}{%
+           family={Voog},
+           familyi={V\bibinitperiod},
+           given={Justin},
+           giveni={J\bibinitperiod}}}%
+        {{hash=bd2bc0890eb0236da6bb39e2a5e3a8ac}{%
+           family={Jones},
+           familyi={J\bibinitperiod},
+           given={D.\bibnamedelimi Leanne},
+           giveni={D\bibinitperiod\bibinitdelim L\bibinitperiod}}}%
+      }
+      \strng{namehash}{cdeb0d91b9d36a3340a090325b956003}
+      \strng{fullhash}{cdeb0d91b9d36a3340a090325b956003}
+      \strng{fullhashraw}{cdeb0d91b9d36a3340a090325b956003}
+      \strng{bibnamehash}{cdeb0d91b9d36a3340a090325b956003}
+      \strng{authorbibnamehash}{cdeb0d91b9d36a3340a090325b956003}
+      \strng{authornamehash}{cdeb0d91b9d36a3340a090325b956003}
+      \strng{authorfullhash}{cdeb0d91b9d36a3340a090325b956003}
+      \strng{authorfullhashraw}{cdeb0d91b9d36a3340a090325b956003}
+      \field{sortinit}{4}
+      \field{sortinithash}{9381316451d1b9788675a07e972a12a7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{Cell Stem Cell}
+      \field{number}{2}
+      \field{title}{Stem Cells and the Niche: A Dynamic Duo}
+      \field{volume}{6}
+      \field{year}{2010}
+      \field{pages}{103\bibrangedash 115}
+      \range{pages}{13}
+      \verb{doi}
+      \verb 10.1016/j.stem.2010.01.011
+      \endverb
+      \verb{urlraw}
+      \verb https://doi.org/10.1016/j.stem.2010.01.011
+      \endverb
+      \verb{url}
+      \verb https://doi.org/10.1016/j.stem.2010.01.011
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+

@@ -10,6 +10,8 @@
 \usepackage{graphicx}
 \usepackage{caption}
 \usepackage{titlesec}
+\usepackage[utf8]{inputenc} % For UTF-8 input encoding
+\usepackage[T1]{fontenc}    % Better font encoding for PDF output
 \usepackage{ragged2e}  % Provides the justifying command
 \usepackage{amssymb}  % For additional symbols
 \usepackage{parskip}  % Automatically handles paragraph spacing
@@ -17,6 +19,9 @@
 \usepackage{newtxtext}  % Times New Roman font
 \usepackage{booktabs}  % For improved table appearance
 \usepackage{array}     % For customizing table columns
+\usepackage{hyperref} % For hyperlinks in the document
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex} % For bibliography management
+
 
 % The starting page number is normally assigned by the editorial office
 % once the article is scheduled into a specific issue. Authors can leave
@@ -40,8 +45,7 @@
     justification=raggedright      % Ensure left alignment of captions
 }
 
-\usepackage[backend=bibtex,style=ieee]{biblatex}
-\addbibresource{references.bib}  % Add your .bib file
+\addbibresource{sources.bib} %Import the bibliography file
 % Customizing bibliography heading
 \defbibheading{bibliography}[\refname]{%
   \section{\MakeUppercase{REFERENCES}}}
@@ -65,7 +69,7 @@
 
 \titleformat{\subsection}{\normalfont\bfseries\flushleft}{\thesubsection.}{1em}{}
 
-\titleformat{\subsubsection}{\normalfont\bfseries\itshape\flushleft}{\thesubsubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\bfseries\itshape\raggedright}{\thesubsubsection.}{1em}{}
 
 % Set font sizes for abstract
 \renewcommand{\abstractnamefont}{\normalfont\fontsize{14}{20}\bfseries}
@@ -100,19 +104,18 @@
   \fancyhf{}  % Clear header and footer
   \fancyhead[LO]{\small Volume X, Issue Y, Year}  % Left header for first page
   \fancyhead[RO]{\small J. Comput. Sci. Appl.}  % Right header for first page
-  \fancyfoot[L]{\footnotesize Received: Month Year; Revised: Month Year; Accepted: Month Year\\\textsuperscript{*}Corresponding Author: Full Name \textless email@example.com\textgreater}
-   \fancyfoot[R]{\footnotesize \copyright\ Year by the Author(s). Published by JCSA,\\\textsuperscript{*} under the CC-BY license }
+  \fancyfoot[L]{\footnotesize Received: Month Year; Revised: Month Year; Accepted: Month Year\\\textsuperscript{*}Corresponding Author: Full Name \textless{}email@example.com\textgreater{}}
+   \fancyfoot[R]{\footnotesize \copyright\ Year by the Author (s). Published by JCSA,\\\textsuperscript{*} under the CC-BY license }
   \renewcommand{\headrulewidth}{0.4pt}  % Add header line
   \renewcommand{\footrulewidth}{0.4pt}  % Add footer line
 }
 
-\title{\fontsize{16}{20}\selectfont\textbf{Title of the Manuscript Goes Here}}
+\title{\fontsize{16}{20}\selectfont\textbf{Stem Cell Growth using Mycelium Framework}}
 \author{
     \fontsize{12}{14}\selectfont
-    First Author\textsuperscript{1*}, Second Author\textsuperscript{2}\\[1ex]
+    Oliver Linger\textsuperscript{1*} \\
     \fontsize{12}{14}\selectfont
-    \textsuperscript{1}Department Name, University Name, City, Country \\
-   \textsuperscript{2}Department Name, University Name, City, Country
+    \textsuperscript{1}Department Name, University Name, City, Country 
 }
 \date{}
 
@@ -123,7 +126,7 @@
 % Change "Research Article" to the appropriate article type if needed
 % (e.g. Review Article, Short Communication).
 \vspace{-0.5cm}  % Adjust spacing as needed between header and "Research Article"
-\raggedright
+\raggedright%
 
 {\fontsize{11}{13}\selectfont{Research Article}}
 \vspace{-0.8cm}  % Adjust spacing between "Research Article" and title
@@ -135,12 +138,13 @@
 \begin{abstract}
 \fontsize{11}{13}\selectfont
 \vspace{1em}
-\justifying
-\textit{[Replace this paragraph with your abstract. The abstract should be a single, self-contained paragraph of approximately 150--250 words summarizing the purpose of the study, the methodology used, the principal results, and the main conclusions. Avoid citations, footnotes, and undefined abbreviations in the abstract.]}
+\justifying%
+Mycelium
 
 \vspace{-0.1cm}
-\noindent\textbf{keywords}
- Keyword one, Keyword two, Keyword three, Keyword four.
+\begin{keywords}
+Place text here
+\end{keywords}
 
 \end{abstract}
 
@@ -149,95 +153,60 @@
 ]
 \section{Introduction}
 \fontsize{12}{14}\selectfont
-\textit{[Replace this section with your Introduction. Provide sufficient background to place the work in context, state the problem being addressed, and summarize the objectives and contributions of the study. The example paragraph below shows the default paragraph style, justification, and hyphenation settings used throughout the template.]}
-
-\lipsum[1]
-
-In-text citations use the \verb|\cite| command and follow the IEEE numbered style configured for this template, e.g., a single reference \cite{1_Su2022} or multiple references \cite{2_Lind2021, 3_Kuwahara2022}.
+Using myclium scaffold to influence stem cell adaptation. 
+Creating the stem cell niche by growing the stem cell in a natural biological scaffold.
 
 \section{Literature Review}
 \fontsize{12}{14}\selectfont
-\textit{[Replace this section with a review of the relevant prior literature, positioning your contribution relative to existing work.]}
+In~\cite{rufferi_mycleium_based_wound_healing_2023}, the affects of a biological gause on wound healing is observed.
+It concludes that the mycelium biomaterials are a promising approach to alternative accelrative wound healing.
+Both tested materials, G. lucidum and P. ostreatus enhance collagen I gene expression.
+G. lucidum performs marginally better. The $\beta$-glucans in the mycelia are crucial in prompting the body to synthesize types I and III collagen.
 
-\lipsum[2-3]
+In~\cite{Antinori2021Mycelium} it is demonstrated that the mycelia of Pleurotus ostreatus can be directly used as the scaffold for cell growth.
+It had good viability, and morphology compared to the control samples used in~\cite{Antinori2021Mycelium}. Human cells were directly plated onto the un-moddified and non-functionalised mycelial scaffold. 
+Worth noting; even after Hyphal cell deactivation, Ganoderma lucidum was not fully compatible for direct plating. 
+Its water extract contained concentrations of organic acids (Ganoderic acid V and Oleandrin). 
+This was detrimental for HDFa cells survivial
+
+In~\cite{Voog2010NicheStemCells}, the stem cell niche is discussed. It details the effect of the microenvironment on stem cell differenciation.
+It provides a methodology for defining the cell types that stem cells can grow into, and the condiitons that are needed for this to occur.
+Under homeostatic conditions, there is a symbiotic relationship between the stem cells and their niche. 
+What must be further investigated is the response of the stem cells and their niche to tissue injury during the disease progression and aging. 
+Further study must be done on genetic factors that influence the stem cell niche. 
 
 \section{Methodology and Data}
-\textit{[Replace this section with a description of your data sources and methodology.]}
 \fontsize{12}{14}\selectfont
-\lipsum[4]
+Place text here
 
 \subsection{Example Subsection}
 \fontsize{12}{14}\selectfont
-\textit{[Use subsections to organize the methodology, e.g., data description, variable construction, and model specification.]}
-
-\lipsum[5]
+Place text here
 
 \subsection{Example Second Subsection}
 \fontsize{12}{14}\selectfont
-\lipsum[6]
+Place text here
 
 \subsubsection{Example Subsubsection}
 
-\textit{[Subsubsections are available for finer-grained organization where needed.]}
+Place text here
 
 \section{Results and Discussion}
 
-\textit{[Replace this section with your results and discussion. The example figures and table below demonstrate the recommended formatting for graphical and tabular content in this template.]}
-
-\lipsum[7]
-
-Figure~\ref{fig:example-one} and Figure~\ref{fig:example-two} illustrate how single-column-width figures are placed and captioned within the two-column layout. Table~\ref{tab:example-table} illustrates the recommended table style.
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{Figure_1_AI_vs_Renewable.png}
-\caption{Example figure demonstrating image placement and caption formatting.}
-\label{fig:example-one}
-\end{figure}
-
-\begin{figure}[h]
-\centering
-\includegraphics[width=0.5\textwidth]{Figure_2_Energy_vs_AI.png}
-\caption{Example figure demonstrating a second illustration within the layout.}
-\label{fig:example-two}
-\end{figure}
-
-\begin{table}[h]
-\centering
-\caption{Example table demonstrating the recommended table formatting.}
-\label{tab:example-table}
-\resizebox{\columnwidth}{!}{%
-\begin{tabular}{|c|c|c|}
-\hline
-\textbf{Category} & \textbf{Metric A} & \textbf{Metric B} \\
-\hline
-Group 1 & 0.85 & 12\% \\
-Group 2 & 0.78 & 10\% \\
-Group 3 & 0.65 & 8\% \\
-Group 4 & 0.50 & 5\% \\
-\hline
-\end{tabular}%
-}
-\end{table}
-
-\lipsum[8]
+Place text here
 
 \section{Conclusion and Future Work}
 
-\textit{[Replace this section with your conclusions, summarizing the key findings and their implications, and outlining directions for future work.]}
-
-\lipsum[9]
+Place text here
 
 \section{Declaration}
 \fontsize{11}{13}\selectfont
 
-\textbf{Conflict of Interest: } [State any conflicts of interest, or declare that the authors have none.]
+\textbf{Conflict of Interest: } Place text here
 
-\textbf{Author Contribution:}
-[Describe each author's contribution, e.g., using CRediT taxonomy roles such as conceptualization, methodology, data collection, analysis, writing, and supervision.]
+\textbf{Author Contribution:} Place text here
 
 % Example for references section
 
-\printbibliography  % Use BibLaTeX for printing bibliography
-
+\printbibliography% Use BibLaTeX for printing bibliography
 \end{document}

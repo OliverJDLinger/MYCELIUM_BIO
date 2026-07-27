@@ -1,0 +1,153 @@
+---
+title: "Musclestemcells"
+author: "Srikanth Ravichandran"
+date: "24 March 2020"
+output: html_document
+---
+
+# Computational analyses based on 'differential expression' to predict intracellular signaling molecules involved in different subpopulations of CD34+ cells 
+
+```{r include=FALSE,echo=T}
+# Required libraries
+  library("topGO") 
+  library (plyr)
+  #library(SigHotSpotter)
+  library(plyr)
+  library(igraph)
+  library(Matrix)
+  library(reshape2)
+  library(parallel)
+  library(RSpectra)
+  library(dplyr)
+  library(snow)
+  library(backports)
+  library(DESeq2)
+  library(zinbwave)
+  library(data.table)
+  library(visNetwork)
+  source("cd34proj_allfunctions.R")
+  source("main_library.R")
+  source("for_plotting_network_functions.R")
+```
+
+## Load data and preprocessing
+```{r,message=FALSE}
+load("MOUSE_Background_Network_omnipath_reactome_metacore_01042019.RDATA")
+# Reading the excel sheest with data and annotation
+# The command uses a function to read all sheets as a lists
+data<-read_excel_allsheets("Heterogeneity_CD34_FOXO_project_Data.xlsx",F)
+tflist<-read.table("Mus_musculus_TF.txt",sep="\t",header=T)
+# extracting the data from excel WB
+annotation <- data$`Sample names`
+expressionData <- join_all(c(data[3:5]),by=c("Gene"))
+#saving the data as r.data
+save(annotation,expressionData, file = "CD34ExpAndAnnodata.RData")
+# load the CD34 data
+#load("C:/Users/srikanth.ravichandra/Documents/WORK 21.04.15/pura_mac/pura/data/CD34ExpAndAnnodata.RData")
+# read differentiall expression data
+```
+### Extraction of different cell subpopulations
+```{r}
+# to grep data
+Young_CD34High<-cbind(expressionData[1],expressionData[,c(grep("Young_CD34High",annotation$Name,value=T))]) #combining from set 7,8,9 and 10
+Young_CD34High_set7_8<-Young_CD34High[,1:8] # data from only set 7 and 8
+Young_CD34High_set7_8_9<-Young_CD34High[,1:12] # data from only set 7 and 8 and 9
+Young_CD34High_set9<-Young_CD34High[,c(1,9:12)] # data from only set 7 and 8
+Young_CD34Low<-cbind(expressionData[1],expressionData[,c(grep("Young_CD34Low",annotation$Name,value=T))]) #combining from set 7,8,9 and 10
+Old_CD34High<-cbind(expressionData[1],expressionData[,c(grep("Old_CD34High",annotation$Name,value=T))])
+Old_CD34Low<-cbind(expressionData[1],expressionData[,c(grep("Old_CD34Low",annotation$Name,value=T))])
+Geriatric_CD34High<-cbind(expressionData[1],expressionData[,c(grep("Geriatric_CD34High",annotation$Name,value=T))])
+Geriatric_CD34Low<-cbind(expressionData[1],expressionData[,c(grep("Geriatric_CD34Low",annotation$Name,value=T))])
+```
+### Read and process differential expression data
+Extract differentially expressed genes. Here, all significantly differentially expressed TFs are taken without any log-fold change cutoff.
+```{r,message=FALSE}
+deExpData<-read_excel_allsheets("Signatures_CD34.xlsx",F)
+# Extract differentially expressed genes. Here, all significantly differentially expressed TFs are taken without any log-fold change cutoff.
+boolDeExp=lapply(deExpData,cd34deBool)
+# shortlisting highly significant DEtfs as there are many TFs differentially expressed for young vs geraitic
+YhivsGhi0.000002<-deExpData$`High DE Young v Geriatric`[deExpData$`High DE Young v Geriatric`$padj<2.07242382665159E-07,] # genes shortlisted by the bioinformatician as signatures
+YhivsGhi0.000002Bool<-cd34deBool(YhivsGhi0.000002)
+names(boolDeExp)
+```
+
+### 1. "Young Signatures DE HvL"
+```{r}
+
+res1_set7_8<-runSigHotSpotter(Young_CD34High_set7_8,Young_CD34Low,100,90,acc=boolDeExp$`Young Signatures DE HvL`)
+
+```
+
+### 6. "High DE Young v Geriatric"
+```{r}
+
+res6_set7_8_9<-runSigHotSpotter(Young_CD34High_set7_8_9,Geriatric_CD34High,100,90,acc=YhivsGhi0.000002Bool)
+
+
+```
+
+# Results of Analysis III
+# Identification of signaling hotspots Considering Foxos as targets
+### Reading refbool discritized data
+```{r}
+foxTfs<-as.data.frame(cbind(c("Foxo1","Foxo3","Foxo4"),rep(1,3)))
+#foxTfs<-read.table("C:/Users/srikanth.ravichandra/Documents/WORK 21.04.15/pura_mac/pura/data/foxtfs.txt",sep="\t",header = T)
+colnames(foxTfs)<-c("Gene","BoolExp")
+#adding foxogenes as non_interface_TFs
+non_interface_TFs<-rbind(non_interface_TFs,foxTfs[1])
+```
+# Finding signaling hotspots considering Foxos (Foxo1,Foxo3 and Foxo4 are considered to be upregulated) as terminal TFs
+```{r}
+#Change the SigHotSpotter_standalone to include Foxos as non-interface TFs. Change non_interface_TFs -> non_interface_TFsF
+res8foxo<-runSigHotSpotterFoxo(Young_CD34High_set7_8,Young_CD34Low,100,90,acc=foxTfs)
+```
+# for plotting the dotplots of final results
+```{r}
+#' function to plot
+#' @param x is the res1[[1]]
+plotBarResult<-function(x){
+a=x$trimmed_score_A
+b=x$trimmed_score_I
+names(a)[1]=c("Gene")
+names(b)[1]=c("Gene")
+d=rbind(a,b)
+d=d[order(d$`Compatibility score`),]
+d$color[d$`Compatibility score`>0.5]="darkgreen"
+d$color[d$`Compatibility score`<0.5]<-"red"
+d$group[d$`Compatibility score`>0.5]='Active'
+d$group[d$`Compatibility score`<0.5]<-'Inactive'
+dotchart(d$`Compatibility score`,labels = d$Gene,cex=0.8,groups = factor(d$group),xlim=c(min(d$`Compatibility score`)-0.005,max(d$`Compatibility score`)+0.04),main="Signaling Hotspots",xlab="Compatibility score",color=d$color,gcolor="black")
+# Adding text
+text(x = d$`Compatibility score`, y = 1:nrow(d)+ifelse(d$group=="Active",2,0), labels= d$`Compatibility score`,cex = 0.6,pos = 4)
+}
+```
+
+# Plot results
+```{r}
+plotBarResult(res1_set7_8[[1]])
+plotBarResult(res1_set7_8[[2]])
+
+plotBarResult(res6_set7_8_9[[1]])
+plotBarResult(res6_set7_8_9[[2]])
+
+plotBarResult(res8foxo[[1]])
+plotBarResult(res8foxo[[2]])
+```
+
+#### Saving network files for plotting in Cytoscape
+```{r eval=FALSE, include=FALSE}
+youngcd34hivsLownodes<-res1_set7_8[[1]]$vis_net_I[[which(res1_set7_8[[1]]$trimmed_score_I=="Akt1")]]$nodes
+youngcd34hivsLowedges<-res1_set7_8[[1]]$vis_net_I[[which(res1_set7_8[[1]]$trimmed_score_I=="Akt1")]]$edges
+youngcd34hivsGeraitricnodes<-res6_set7_8_9[[1]]$vis_net_I[[which(res6_set7_8_9[[1]]$trimmed_score_I=="Akt1")]]$nodes
+youngcd34hivsGeraitricedges<-res6_set7_8_9[[1]]$vis_net_I[[which(res6_set7_8_9[[1]]$trimmed_score_I=="Akt1")]]$edges
+factorsForFoxoNodes<-res8foxo[[2]]$vis_net_A[[which(res8foxo[[2]]$trimmed_score_A=="Akt1")]]$nodes
+factorsForFoxoEdges<-res8foxo[[2]]$vis_net_A[[which(res8foxo[[2]]$trimmed_score_A=="Akt1")]]$edges
+
+# writing the output network tables
+write.table(youngcd34hivsLownodes,"youngcd34hivsLownodes.txt",sep="\t",row.names = F,quote = F)
+write.table(youngcd34hivsLowedges,"youngcd34hivsLowedges.txt",sep="\t",row.names = F,quote = F)
+write.table(youngcd34hivsGeraitricnodes,"youngcd34hivsGeraitricnodes.txt",sep="\t",row.names = F,quote = F)
+write.table(youngcd34hivsGeraitricedges,"youngcd34hivsGeraitricedges.txt",sep="\t",row.names = F,quote = F)
+write.table(factorsForFoxoNodes,"factorsForFoxoNodes.txt",sep="\t",row.names = F,quote = F)
+write.table(factorsForFoxoEdges,"factorsForFoxoEdges.txt",sep="\t",row.names = F,quote = F)
+```
