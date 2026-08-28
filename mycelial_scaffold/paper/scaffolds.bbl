@@ -181,6 +181,57 @@
       \verb https://doi.org/10.1016/j.stem.2010.01.011
       \endverb
     \endentry
+    \entry{potapov2022computational}{article}{}{}
+      \name{author}{5}{}{%
+        {{hash=c03773d23f89175405da89c43bdbc2ad}{%
+           family={Potapov},
+           familyi={P\bibinitperiod},
+           given={Ivan},
+           giveni={I\bibinitperiod}}}%
+        {{hash=31542cac1672c98656e1c9c600426402}{%
+           family={García-Prat},
+           familyi={G\bibinithyphendelim P\bibinitperiod},
+           given={Laura},
+           giveni={L\bibinitperiod}}}%
+        {{hash=176ecefd2d5f4cdad5569129497708e5}{%
+           family={Ravichandran},
+           familyi={R\bibinitperiod},
+           given={Srikanth},
+           giveni={S\bibinitperiod}}}%
+        {{hash=1b446142bafffe5357ee39e1d50929ee}{%
+           family={Muñoz-Cánoves},
+           familyi={M\bibinithyphendelim C\bibinitperiod},
+           given={Pura},
+           giveni={P\bibinitperiod}}}%
+        {{hash=a753a0e1bfa80e977781685afc46f2ef}{%
+           family={Del\bibnamedelima Sol},
+           familyi={D\bibinitperiod\bibinitdelim S\bibinitperiod},
+           given={Antonio},
+           giveni={A\bibinitperiod}}}%
+      }
+      \strng{namehash}{7c4fc947c910c0c3d59356449bd4acd0}
+      \strng{fullhash}{6e0c93e40af6c3dc362d9f9703cb01d6}
+      \strng{fullhashraw}{6e0c93e40af6c3dc362d9f9703cb01d6}
+      \strng{bibnamehash}{7c4fc947c910c0c3d59356449bd4acd0}
+      \strng{authorbibnamehash}{7c4fc947c910c0c3d59356449bd4acd0}
+      \strng{authornamehash}{7c4fc947c910c0c3d59356449bd4acd0}
+      \strng{authorfullhash}{6e0c93e40af6c3dc362d9f9703cb01d6}
+      \strng{authorfullhashraw}{6e0c93e40af6c3dc362d9f9703cb01d6}
+      \field{sortinit}{5}
+      \field{sortinithash}{20e9b4b0b173788c5dace24730f47d8c}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{The FEBS Journal}
+      \field{number}{6}
+      \field{title}{Computational modelling of stem cell-niche interactions facilitates discovery of strategies to enhance tissue regeneration and counteract ageing}
+      \field{volume}{289}
+      \field{year}{2022}
+      \field{pages}{1486\bibrangedash 1491}
+      \range{pages}{6}
+      \verb{doi}
+      \verb 10.1111/febs.15832
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput
