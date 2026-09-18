@@ -9,3 +9,11 @@ Tracks nutrient diffusion and uptake.
 
 Outputs structural metrics: fractal dimension, connectivity, and porosity.
 
+The goal is to provide a prototype method for creating mycelium structures that can be grown onsite as medical equipment. 
+
+Method:
+1. design environmental factors for mycelium growth.
+2. Design ideal sterilization method for de-toxification.
+3. Design application method.
+
+
